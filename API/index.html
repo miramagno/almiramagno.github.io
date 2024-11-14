@@ -130,7 +130,6 @@
         <div class="container gallery-wrapper" id="gallery-container"></div>
     </div>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const galleryContainer = document.getElementById('gallery-container');
@@ -174,12 +173,14 @@
                 card.appendChild(cardBody);
                 cardCol.appendChild(card);
 
-                cardBody.addEventListener('click', () =>{
-                    const characterId = data.url.split("/") {5};
+                cardCol.addEventListener('click', () => {
+                    const characterId = data.url.split("/")[5];
                     window.location.href = `view.html?id=${characterId}`;
                 });
+
                 galleryContainer.appendChild(cardCol);
             }
+
 
             function revealCards() {
                 const reveals = document.querySelectorAll('.reveal');
@@ -189,7 +190,6 @@
                     }, index * 100);
                 });
             }
-
 
             searchBar.addEventListener('input', (event) => {
                 const query = event.target.value.toLowerCase();
@@ -208,7 +208,6 @@
             fetchCharacters();
         });
     </script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
