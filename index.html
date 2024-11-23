@@ -325,16 +325,17 @@
 
         var contents = [
             {
-                "link": "Brochure",
-                "description": "Acer Swift 3 Brochure"
+                "link": "Acer Brochure",
+                "description": "Check out the brochure for the Acer Swift 3 laptop.",
+                "url": "https://simplebooklet.com/acer_brochure"
             },
             {
                 "link": "Travels",
-                "description": "Switzerland Tour"
+                "description": "Switzerland Tour and a playlist embed"
             },
             {
                 "link": "Portfolio",
-                "description": "Almira Magno Portfolio"
+                "description": "Almira Magno Portfolio that contains my projects"
             },
             {
                 "link": "API",
@@ -342,7 +343,7 @@
             },
             {
                 "link": "Enhypen",
-                "description": "Videos about K-pop group Enhypen"
+                "description": "Videos about K-pop group Enhypen by embedding using the YouTube embed API."
             },
             {
                 "link": "Project6",
@@ -356,27 +357,29 @@
         for (var i = 0; i < contents.length; i++) {
             var courseCode = "SAM";
             var title = contents[i].link;
-            var siteLink = "https://miramagno.github.io/" + title;
+            var siteLink = contents[i].url || "https://miramagno.github.io/" + title;
             var githubLink = "https://github.com/miramagno/miramagno.github.io/tree/main/" + title;
             var description = contents[i].description;
 
+            var githubButton = title !== "Acer Brochure" ? `
+        <a href="` + githubLink + `" class="btn btn-outline-dark mx-1">GitHub</a>` : "";
+
             container.innerHTML += `
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card my-3 rounded-5 overflow-hidden project-card" style="height: fit-content">
-                <embed type="text/html" src="`+ siteLink + `" width="100%" height="200px">
-                <div class="card-body shadow-lg d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                    <h4 class="card-title">`+ title + `</h4>
-                    <p class="card-text text-body-primary">`+ description + `</p>
-                    <div>
-                        <a href="`+ githubLink + `" class="btn btn-outline-dark mx-1">GitHub</a>
-                        <a href="`+ siteLink + `" target="_blank" class="btn btn-outline-dark mx-1">Site</a>
-                    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="card my-3 rounded-5 overflow-hidden project-card" style="height: fit-content">
+            <embed type="text/html" src="`+ siteLink + `" width="100%" height="200px">
+            <div class="card-body shadow-lg d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                <h4 class="card-title">`+ title + `</h4>
+                <p class="card-text text-body-primary">`+ description + `</p>
+                <div>
+                    `+ githubButton + `
+                    <a href="`+ siteLink + `" target="_blank" class="btn btn-outline-dark mx-1">Site</a>
                 </div>
             </div>
         </div>
+    </div>
     `;
         }
-
     </script>
 
 </body>
